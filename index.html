@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perfwell &amp; Vane | Stamps for collectors</title>
+<meta name="description" content="Kiloware, Machins, worldwide mixtures and stock cards. Posted from the UK to collectors everywhere.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#edf1f2;--ink:#0e1f2e;--red:#b3202a;--brass:#8c7035;--card:#fbfcfc;--mut:#5a6b78;--line:#cfd9de}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 'IBM Plex Sans',system-ui,sans-serif}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.01em;margin:0}
+a{color:inherit}button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--ink);color:#fff}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:Fraunces,Georgia,serif;font-size:21px;font-weight:700;text-decoration:none}
+.logo i{color:#e5606a;font-style:normal}
+nav a{margin-right:22px;text-decoration:none;font-size:14px;opacity:.85}
+#cartBtn{background:var(--red);color:#fff;border:0;border-radius:3px;padding:8px 14px;font-weight:600}
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(36px,6vw,62px);line-height:1.04}
+.hero p{max-width:46ch;color:var(--mut);font-size:18px}
+.btn{display:inline-block;background:var(--ink);color:#fff;padding:13px 22px;border-radius:3px;text-decoration:none;font-weight:600;border:0}
+.postmark{width:100%;max-width:380px;justify-self:center;animation:spin 1.2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes spin{from{transform:rotate(-40deg) scale(.8);opacity:0}}
+.perk{display:flex;gap:28px;flex-wrap:wrap;padding:16px 0;font-size:14px;color:var(--mut)}
+.perk b{color:var(--ink)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:36px 0 20px}
+.filters button{border:1px solid var(--ink);background:none;padding:7px 14px;border-radius:99px}
+.filters button[aria-pressed=true]{background:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px;padding-bottom:60px}
+.card{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column}
+.art{aspect-ratio:4/3;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+.art img{width:100%;height:100%;object-fit:cover}
+.stamp{position:absolute;width:34%;aspect-ratio:3/4;padding:7px;background:#fff;box-shadow:0 1px 3px #0003;
+ -webkit-mask:radial-gradient(circle 3px at 6px 6px,#0000 98%,#000) -6px -6px/12px 12px;mask:radial-gradient(circle 3px at 6px 6px,#0000 98%,#000) -6px -6px/12px 12px}
+.stamp span{display:flex;height:100%;align-items:flex-end;justify-content:flex-end;padding:4px 6px;color:#fff;font:700 15px Fraunces,serif}
+.body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.body h3{font-size:19px;line-height:1.2}.body p{margin:0;color:var(--mut);font-size:14px;flex:1}
+.meta{font-size:12.5px;color:var(--brass);font-weight:600}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.price{font:700 22px Fraunces,serif}
+.add{background:var(--red);color:#fff;border:0;padding:9px 14px;border-radius:3px;font-weight:600}
+section.info{background:var(--ink);color:#e8eef1;padding:56px 0}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+.cols h3{color:#fff;margin-bottom:8px}.cols p{margin:0;opacity:.8;font-size:15px}
+table{border-collapse:collapse;margin-top:10px;font-size:14px}td{padding:5px 18px 5px 0;opacity:.9}
+footer{padding:28px 0;font-size:13px;color:var(--mut)}
+#drawer{position:fixed;inset:0 0 0 auto;width:min(420px,100%);background:#fff;z-index:50;transform:translateX(100%);transition:transform .3s,visibility .3s;display:flex;flex-direction:column;visibility:hidden}
+#drawer.open{transform:none;visibility:visible;box-shadow:-8px 0 30px #0004}
+#drawer header{position:static}#drawer .wrap{padding:0 16px}
+#items{flex:1;overflow:auto;padding:8px 16px}
+.line{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.qty button{width:26px;height:26px;border:1px solid var(--ink);background:none;border-radius:3px}
+.foot{padding:16px;border-top:1px solid var(--line);display:grid;gap:8px;font-size:14px}
+.foot select{padding:9px;border:1px solid var(--ink);border-radius:3px;font:inherit;width:100%}
+.foot .t{display:flex;justify-content:space-between}.foot .tot{font:700 20px Fraunces,serif}
+#err{color:var(--red);min-height:18px}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}nav{display:none}}
+@media(prefers-reduced-motion:reduce){.postmark{animation:none}#drawer{transition:none}}
+</style></head><body>
+<header><div class="wrap"><a class="logo" href="#">Perfwell <i>&amp;</i> Vane</a>
+<nav><a href="#shop">Shop</a><a href="#postage">Postage</a><a href="#about">About</a></nav>
+<button id="cartBtn" aria-label="Open basket">Basket (<span id="cnt">0</span>)</button></div></header>
+
+<div class="hero"><div class="wrap"><div>
+<h1>Stamps worth turning over.</h1>
+<p>Kiloware, Machins, worldwide mixtures and stock cards, weighed and posted from the UK to collectors in every country.</p>
+<p><a class="btn" href="#shop">Browse the collection</a></p></div>
+<svg class="postmark" viewBox="0 0 320 200" role="img" aria-label="Postmark reading Perfwell and Vane, United Kingdom">
+<g fill="none" stroke="#b3202a" stroke-width="3"><circle cx="100" cy="100" r="78"/><circle cx="100" cy="100" r="62" stroke-width="1.5"/>
+<path d="M184 70q15-12 30 0t30 0 30 0 30 0M184 92q15-12 30 0t30 0 30 0 30 0M184 114q15-12 30 0t30 0 30 0 30 0M184 136q15-12 30 0t30 0 30 0 30 0"/></g>
+<g fill="#b3202a" font-family="Fraunces,serif" font-weight="700" text-anchor="middle"><text x="100" y="92" font-size="19">PERFWELL</text><text x="100" y="114" font-size="19">&amp; VANE</text><text x="100" y="138" font-size="11" font-family="IBM Plex Sans,sans-serif">UNITED KINGDOM</text></g></svg>
+</div></div>
+
+<div class="wrap"><div class="perk"><span><b>UK postage £1.99</b> flat per order</span><span><b>Worldwide</b> tracked and signed options on request</span><span><b>Secure</b> card payment by Stripe</span></div>
+<main id="shop"><div class="filters" id="filters" role="group" aria-label="Filter by category"></div><div class="grid" id="grid"></div></main></div>
+
+<section class="info" id="postage"><div class="wrap cols">
+<div><h3>Postage</h3><p>One postage charge per order, however many lots you add.</p>
+<table><tr><td>United Kingdom</td><td>£1.99</td></tr><tr><td>Europe</td><td>£4.25</td></tr><tr><td>USA and Canada</td><td>£6.50</td></tr><tr><td>Australia, NZ and Asia</td><td>£7.25</td></tr><tr><td>Rest of world</td><td>£7.95</td></tr></table></div>
+<div><h3 id="about">How lots are described</h3><p>Kiloware is sold by weight and is a mixture: you get what is in the bag, so expect duplicates. Weights are approximate. Photos show the style of the material.</p></div>
+<div><h3>Returns</h3><p>Not happy with your lot? Message us within 14 days of delivery and we will put it right.</p></div></div></section>
+<footer><div class="wrap">© <span id="yr"></span> Perfwell &amp; Vane. Posted from the United Kingdom.</div></footer>
+
+<aside id="drawer" aria-label="Basket"><header><div class="wrap"><b class="serif">Your basket</b><button id="close" style="background:none;border:0;color:#fff;font-size:26px" aria-label="Close basket">×</button></div></header>
+<div id="items"></div>
+<div class="foot"><label for="zone">Delivering to</label><select id="zone"></select>
+<div class="t"><span>Lots</span><span id="sub"></span></div><div class="t"><span>Postage</span><span id="ship"></span></div>
+<div class="t tot"><span>Total</span><span id="tot"></span></div><div id="err" role="alert"></div>
+<button class="btn" id="pay">Pay securely with Stripe</button></div></aside>
+
+<script>
+const ZONES={UK:["United Kingdom",1.99],EU:["Europe",4.25],NA:["USA and Canada",6.5],AP:["Australia, NZ and Asia",7.25],RW:["Rest of world",7.95]};
+const P=[
+{id:"gb-200",img:"images/gb-200.jpg",c:"Great Britain",n:"Great Britain Commemorative & Definitive Mix, 200g on paper",d:"A generous 200g of used British commemoratives, Machins and regional issues on paper, ready to soak and sort.",p:6.5,w:"200g",h:[8,350,40]},
+{id:"gb-mach200",img:"images/gb-mach200.jpg",c:"Great Britain",n:"Machin Definitives on Paper, 200g Mixed Kiloware",d:"Used Machin definitives in many values and colours, left on paper for soaking. Good for shade and cancel hunting.",p:6.49,w:"200g",h:[200,150,40]},
+{id:"gb-sec100",img:"images/gb-sec100.jpg",c:"Great Britain",n:"Security Machin Selection, 100g (Damaged Removed)",d:"Small-format security Machins, hand-checked with damaged stamps removed. Ideal for postmark and plate-letter study.",p:11.99,w:"100g",h:[210,60,20]},
+{id:"gb-sec20",img:"images/gb-sec20.jpg",c:"Great Britain",n:"Security Machin 1st & 2nd Class, 20g Trimmed on Paper",d:"Neatly trimmed 1st Class gold and 2nd Class blue security Machins, ready to soak and enjoy.",p:7.99,w:"20g",h:[45,205,45]},
+{id:"au-60",img:"images/au-60.jpg",c:"Australia",n:"Australia Mixed Kiloware, 60g on Paper",d:"Colourful Australian issues including wildlife, Christmas Island and international post values, on paper.",p:9.99,w:"60g",h:[28,200,170]},
+{id:"ww-30",img:"images/ww-30.jpg",c:"Worldwide",n:"Worldwide Vintage & Modern Kiloware, 200+ Stamps",d:"Over 200 stamps from across the globe, vintage and modern. Roughly 30g, with free UK post.",p:7.99,w:"30g",h:[160,35,200]},
+{id:"ww-100",img:"images/ww-100.jpg",c:"Worldwide",n:"Vintage World Postage Stamps, 100 Off Paper",d:"One hundred random vintage stamps from around the world, off paper and ready to mount.",p:8.99,w:"100 stamps",h:[20,170,100]},
+{id:"ww-1000",img:"images/ww-1000.jpg",c:"Worldwide",n:"The Thousand: Worldwide Used Collection, Off Paper",d:"One thousand mixed foreign stamps from vintage to modern, all off paper. A proper start for a new album.",p:24.99,w:"1,000 stamps",h:[280,20,220]},
+{id:"stock-eu",img:"images/stock-eu.jpg",c:"Stock Cards",n:"Early European Stock Card: Germany, Poland & Switzerland",d:"A large stock card of older used stamps from several European countries, including Germany, Poland, Czechoslovakia and Switzerland.",p:34.99,w:"1 stock card",h:[150,350,45]}];
+const $=s=>document.querySelector(s),money=n=>"£"+n.toFixed(2);
+let cart={},cat="All";try{cart=JSON.parse(localStorage.getItem("pv")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("pv",JSON.stringify(cart))}catch(e){}};
+function art(p){const [a,b,c]=p.h;return [0,1,2].map(i=>{const hue=[a,b,c][i];const pos=[["8%","12%",-8],["33%","24%",5],["58%","10%",-3]][i];
+return `<div class="stamp" style="left:${pos[0]};top:${pos[1]};transform:rotate(${pos[2]*2}deg);background:#fff"><span style="background:linear-gradient(145deg,hsl(${hue} 55% 38%),hsl(${(hue+40)%360} 60% 55%))">${["1st","2nd","20p"][i]}</span></div>`}).join("")+`<div class="stamp" style="left:12%;top:48%;transform:rotate(4deg)"><span style="background:hsl(${(a+90)%360} 45% 40%)">5p</span></div><div class="stamp" style="left:50%;top:44%;transform:rotate(-6deg)"><span style="background:hsl(${(b+60)%360} 50% 42%)">10</span></div>`}
+function render(){const cs=["All",...new Set(P.map(p=>p.c))];
+$("#filters").innerHTML=cs.map(c=>`<button aria-pressed="${c==cat}" data-c="${c}">${c}</button>`).join("");
+$("#grid").innerHTML=P.filter(p=>cat=="All"||p.c==cat).map(p=>`<article class="card"><div class="art">${p.img?`<img src="${p.img}" alt="${p.n}" loading="lazy">`:art(p)}</div><div class="body"><span class="meta">${p.c}, ${p.w}</span><h3>${p.n}</h3><p>${p.d}</p><div class="row"><span class="price">${money(p.p)}</span><button class="add" data-id="${p.id}">Add to basket</button></div></div></article>`).join("")}
+function ship(){return ZONES[$("#zone").value][1]}
+function draw(){const ids=Object.keys(cart).filter(i=>cart[i]>0);let sub=0,n=0;
+$("#items").innerHTML=ids.length?ids.map(i=>{const p=P.find(x=>x.id==i);sub+=p.p*cart[i];n+=cart[i];return `<div class="line"><div><b>${p.n}</b><br>${money(p.p)}</div><div class="qty"><button data-m="${i}" aria-label="Remove one">−</button> ${cart[i]} <button data-a="${i}" aria-label="Add one">+</button></div></div>`}).join(""):"<p>Your basket is empty. Add a lot to get started.</p>";
+$("#cnt").textContent=n;$("#sub").textContent=money(sub);const s=ids.length?ship():0;$("#ship").textContent=money(s);$("#tot").textContent=money(sub+s);$("#pay").disabled=!ids.length;save()}
+$("#zone").innerHTML=Object.entries(ZONES).map(([k,v])=>`<option value="${k}">${v[0]} (${money(v[1])})</option>`).join("");
+$("#zone").onchange=draw;
+document.addEventListener("click",e=>{const t=e.target;
+if(t.dataset.c){cat=t.dataset.c;render()}
+if(t.dataset.id){cart[t.dataset.id]=(cart[t.dataset.id]||0)+1;draw();$("#drawer").classList.add("open")}
+if(t.dataset.a){cart[t.dataset.a]++;draw()}if(t.dataset.m){cart[t.dataset.m]--;draw()}});
+$("#cartBtn").onclick=()=>$("#drawer").classList.add("open");$("#close").onclick=()=>$("#drawer").classList.remove("open");
+document.addEventListener("keydown",e=>{if(e.key=="Escape")$("#drawer").classList.remove("open")});
+$("#pay").onclick=async()=>{$("#err").textContent="";$("#pay").textContent="Opening checkout...";
+try{const r=await fetch("/api/checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({items:Object.entries(cart).filter(x=>x[1]>0).map(([id,qty])=>({id,qty})),zone:$("#zone").value})});
+const d=await r.json();if(!d.url)throw new Error(d.error||"Checkout failed");location.href=d.url}
+catch(e){$("#err").textContent="Checkout could not start. Please try again.";$("#pay").textContent="Pay securely with Stripe"}};
+if(location.search.includes("paid=1")){cart={};save();const b=document.createElement("div");b.setAttribute("role","status");b.style.cssText="background:#1d6b3a;color:#fff;text-align:center;padding:12px";b.textContent="Thank you! Your payment went through and your order is being prepared. A receipt is on its way to your email.";document.body.prepend(b)}
+$("#yr").textContent=new Date().getFullYear();render();draw();
+</script></body></html>
